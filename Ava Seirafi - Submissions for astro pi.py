@@ -68,7 +68,7 @@ for i in range(64):
     # with the black from world_pixels
     view = [
         [
-            view_pixel if mask_pixel == '⬜️' else mask_pixel
+            view_pixel if mask_pixel == 'a' else mask_pixel
             for view_pixel, mask_pixel in zip(view_row, mask_row)
         ]
         for view_row, mask_row in zip(view, mask_pixels)

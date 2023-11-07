@@ -40,31 +40,31 @@ z = (153, 50, 204) # DarkOrchid
 
 
 image = [
-  [h, v, v, h, h, v, v, h, h, h, h, h, h, h, h, h],
-  [v, v, v, v, v, v, v, v, h, h, h, h, h, h, h, h],
-  [v, v, v, v, v, v, v, v, h, h, h, h, h, h, h, h],
-  [h, v, v, v, v, v, v, h, h, h, h, h, h, h, h, h],
-  [h, h, v, v, v, v, h, h, h, h, h, h, h, h, h, h],
-  [m, h, h, v, v, h, h, m, h, h, h, h, h, h, h, h],
-  [h, m, m, m, m, m, m, h, h, h, h, h, h, h, h, h],
-  [h, h, h, m, m, h, h, h, h, h, h, h, h, h, h, h],
-]
+  [g, a, g, a, g, a, g, a, g, a, g, a, g, a, g, a],
+  [g, m, m, g, g, m, m, g, m, m, g, g, g, g, g, g],
+  [m, m, m, m, m, m, m, g, m, m, m, m, g, m, m, g],
+  [m, m, g, g, m, m, m, g, g, m, m, m, g, g, g, m],
+  [m, g, g, g, g, m, g, g, g, g, m, g, m, g, m, m],
+  [m, m, m, g, g, g, m, m, m, m, g, g, m, m, m, g],
+  [m, m, m, g, g, m, m, m, m, g, g, g, m, m, m, g],
+  [a, g, a, g, a, g, a, g, a, g, a, g, a, g, a, g],
+] 
 
 
-for i in range(64):    
+for i in range(48):    
     rgb = sense.color # get the colour from the sensor
-    e = (rgb.red, rgb.green, rgb.blue) # use the sensed colour
+    c = (rgb.red, rgb.green, rgb.blue) # use the sensed colour
 
     # A 8x8 multidimensional list pixel art map of circle
     mask_pixels = [
-     [a, a, a, a, a, a, a, a],
-     [a, a, a, a, a, a, a, a],
-     [a, a, e, a, a, e, a, a],
-     [a, a, a, a, a, a, a, a],
-     [a, a, e, a, a, a, e, a],
-     [a, a, a, e, e, e, a, a],
-     [a, a, a, a, a, a, a, a],
-     [a, a, a, a, a, a, a, a],
+     [c, c, c, c, c, c, c, c],
+     [c, c, a, a, a, a, c, c],
+     [c, a, a, a, a, a, a, c],
+     [c, a, a, a, a, a, a, c],
+     [c, a, a, a, a, a, a, c],
+     [c, a, a, a, a, a, a, c],
+     [c, c, a, a, a, a, c, c],
+     [c, c, c, c, c, c, c, c],
     ]
     
     view = ([list(islice(cycle(row), i, i+8)) for row in image])

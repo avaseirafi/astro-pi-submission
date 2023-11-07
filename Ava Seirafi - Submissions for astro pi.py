@@ -49,26 +49,31 @@ image = [
   [h, m, m, m, m, m, m, h, h, h, h, h, h, h, h, h],
   [h, h, h, m, m, h, h, h, h, h, h, h, h, h, h, h],
 ]
-# A 8x8 multidimensional list pixel art map of circle
-mask_pixels = [
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
- [a, a, a, a, a, a, a, a],
-]
 
-for i in range(64):
+
+for i in range(64):    
+    rgb = sense.color # get the colour from the sensor
+    e = (rgb.red, rgb.green, rgb.blue) # use the sensed colour
+
+    # A 8x8 multidimensional list pixel art map of circle
+    mask_pixels = [
+     [a, a, a, a, a, a, a, a],
+     [a, a, a, a, a, a, a, a],
+     [a, a, e, a, a, e, a, a],
+     [a, a, a, a, a, a, a, a],
+     [a, a, e, a, a, a, e, a],
+     [a, a, a, e, e, e, a, a],
+     [a, a, a, a, a, a, a, a],
+     [a, a, a, a, a, a, a, a],
+    ]
+    
     view = ([list(islice(cycle(row), i, i+8)) for row in image])
     # test if there is a white pixel in world_pixels if so
     # keep the pixel from view otherwise replace view's pixel
     # with the black from world_pixels
     view = [
         [
-            view_pixel if mask_pixel == 'a' else mask_pixel
+            view_pixel if mask_pixel == a else mask_pixel
             for view_pixel, mask_pixel in zip(view_row, mask_row)
         ]
         for view_row, mask_row in zip(view, mask_pixels)
@@ -84,7 +89,8 @@ for i in range(64):
             # Append the current item to the list of concatenated items
             concatenated_view_items.append(item)
 
-  
+
     sense.set_pixels(concatenated_view_items)
     sleep(0.6)
 
+print(concatenated_view_items)

@@ -74,19 +74,17 @@ for i in range(64):
         for view_row, mask_row in zip(view, mask_pixels)
     ]
 
-  # Initialize an empty list to hold the concatenated items
-concatenated_view_items = []
+    # Initialize an empty list to hold the concatenated items
+    concatenated_view_items = []
+    
+    # Iterate over each row in the 'view' matrix (assuming 'view' is a list of lists)
+    for row in view:
+        # Iterate over each item in the current row
+        for item in row:
+            # Append the current item to the list of concatenated items
+            concatenated_view_items.append(item)
 
-# Iterate over each row in the 'view' matrix (assuming 'view' is a list of lists)
-for row in view:
-    # Iterate over each item in the current row
-    for item in row:
-        # Append the current item to the list of concatenated items
-        concatenated_view_items.append(item)
-
-# Reverse the order of items in the concatenated list to get a reversed view
-concatenated_view_items
-
-    sense.set_pixels(view)
+  
+    sense.set_pixels(concatenated_view_items)
     sleep(0.6)
 
